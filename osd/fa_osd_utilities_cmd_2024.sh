@@ -2,17 +2,33 @@
 
 count=0	
 
-while [ $count -le 8 ]; do
+#regidster input service
+while [ $count -le 6 ]; do
 	index=$((count + 1))
 	SERVICES[$count]=fa_osd_input_${index}.service
-	#echo ${SERVICES[$count]}
+	echo ${SERVICES[$count]}
 	count=$((count + 1))
 done
 
-SERVICES[count]=fa_osd_manager.service
+#register osd manager
+SERVICES[$count]=fa_osd_manager.service
 
-service_count=count
+count=$((count + 1))
+
+#register amqp2tcp
+SERVICES[$count]=fa_osd_amqp2tcp.service
+
+count=$((count + 1))
+
+#register shutdowner
+SERVICES[$count]=fa_osd_shutdowner.service
+
+count=$((count + 1))
+
+service_count=$count
 	
+echo $service_count
+
 case $1 in
  enable)
   # Checked the PID file exists and check the actual status of process

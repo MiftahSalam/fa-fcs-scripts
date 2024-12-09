@@ -1,0 +1,12 @@
+Description=FA OSD shutdowner
+Wants=network-online.target systemd-networkd-wait-online.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/support/shutdowner/.env"
+ExecStart=/opt/fcs/support/shutdowner/FA-FCS-2020-Shutdowner
+
+[Install]
+WantedBy=multi-user.target
+

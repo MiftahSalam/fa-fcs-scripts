@@ -1,11 +1,11 @@
-Description=FA OSD Input 1
+Description=FA OSD Input 2
 Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
 
 [Service]
 Restart=on-failure
 RestartSec=3s
-Environment="CONFIG_FILE=/opt/fa/osd/input_1/.env"
-ExecStart=/opt/fa/osd/input_1/input_1
+Environment="CONFIG_FILE=/opt/fcs/osd/input/input_2/.env"
+ExecStart=/opt/fcs/osd/input/input_2/fa-fcs-osd
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=hmi
+#Exec=/opt/fcs/run.sh
+Exec=/opt/fcs/deploy/run.sh
+Comment=
+Terminal=true
+PrefersNonDefaultGPU=false
+Icon=cinnamon-panel-launcher
+Type=Application

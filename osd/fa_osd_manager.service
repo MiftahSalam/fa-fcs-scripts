@@ -1,0 +1,12 @@
+Description=FA OSD manager
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/osd/manager/.env"
+ExecStart=/opt/fcs/osd/manager/fa-fcs-osd-manager
+
+[Install]
+WantedBy=multi-user.target
+
