@@ -1,0 +1,12 @@
+Description=FA Gun Fire Triangle
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/gun/fire-triangle/.env"
+ExecStart=/opt/fcs/gun/fire-triangle/fa-fcs-gun40-fire-triangle
+
+[Install]
+WantedBy=multi-user.target
+

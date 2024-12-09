@@ -1,0 +1,13 @@
+Description=FA Gun Interface
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="/opt/fcs/gun/gun-interface/application.properties"
+ExecStartPre=/bin/bash -c '(while ! nc -z -v -w1 192.168.1.6 5672 2>/dev/null; do echo "Waiting osd rabbitmq to start..."; sleep 2; done); sleep 2'
+ExecStart=java -Dspring.config.location=/opt/fcs/gun/gun-interface/application.properties -jar /opt/fcs/gun/gun-interface/gun-40-interface.jar 
+
+[Install]
+WantedBy=multi-user.target
+

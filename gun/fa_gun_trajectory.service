@@ -1,0 +1,12 @@
+Description=FA Gun Trajectory
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/gun/gun-trajectory/.env"
+ExecStart=/home/gun/.nvm/versions/node/v20.16.0/bin/node --env-file=/opt/fcs/gun/gun-trajectory/.env /opt/fcs/gun/gun-trajectory/index.js
+
+[Install]
+WantedBy=multi-user.target
+

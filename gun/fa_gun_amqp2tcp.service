@@ -1,0 +1,12 @@
+Description=FA Gun Amqp2tcp
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/support/amqp2tcp/.env"
+ExecStart=/opt/fcs/support/amqp2tcp/fa-fcs-amqp2tcp
+
+[Install]
+WantedBy=multi-user.target
+

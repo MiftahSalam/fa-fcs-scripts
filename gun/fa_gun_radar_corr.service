@@ -1,0 +1,12 @@
+Description=FA Radar-Gun Correction
+Wants=network-online.target systemd-networkd-wait-online.service redis.service rabbitmq.service
+
+[Service]
+Restart=on-failure
+RestartSec=3s
+Environment="CONFIG_FILE=/opt/fcs/gun/radar-gun-corr/.env"
+ExecStart=/home/gun/.nvm/versions/node/v20.16.0/bin/node /opt/fcs/gun/radar-gun-corr/index.js
+
+[Install]
+WantedBy=multi-user.target
+
